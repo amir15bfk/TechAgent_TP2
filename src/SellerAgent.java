@@ -94,9 +94,9 @@ public class SellerAgent extends Agent{
                                 Logger.getLogger(SellerAgent.class.getName()).log(Level.SEVERE, null, ex);
                             }
                             if (highestBid>=product.getReservePrice()){
-                                new Winner(highestBidder.getLocalName(),product.getName(),highestBid);
+                                System.out.println("The winner is "+highestBidder.getLocalName()+" with "+highestBid);
                             }else{
-                                new Winner();
+                                System.out.println("no winner ");
                             }
 
                         }
@@ -106,95 +106,6 @@ public class SellerAgent extends Agent{
             }
         }
     }
-    public class Winner extends JFrame implements MouseListener {
-    private JLabel label;
-    private JLabel label2;
-    private String name;    
-    private String product;
-    private boolean revealed;
     
-    public Winner(String name,String product,double value) {
-        super("The Winner Is...!");
-        this.name = name;
-        this.product = product;
-        
-        label = new JLabel("the "+product+" is sold to ...");
-        label.setFont(new Font("Arial", Font.BOLD, 30));
-        label.setForeground(Color.YELLOW);
-        label.addMouseListener(this);
-        
-        JPanel panel = new JPanel();
-        panel.setBackground(Color.darkGray);
-        panel.add(label);
-
-        add(panel, BorderLayout.CENTER);
-        label2 = new JLabel("with "+String.format("%.02f", value)+" $");
-        label2.setFont(new Font("Arial", Font.BOLD, 20));
-        label2.setForeground(Color.YELLOW);
-        label2.setVisible(false);
-        panel = new JPanel();
-        panel.setBackground(Color.darkGray);
-        panel.add(label2);
-
-        add(panel, BorderLayout.SOUTH);
-        pack();
-        
-        setSize(700, 200);
-        setLocationRelativeTo(null); 
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setVisible(true);     
-    }
-    public Winner() {
-        super("no one won");
-        
-        label = new JLabel("the sell is cancel");
-        label.setFont(new Font("Arial", Font.BOLD, 50));
-        label.setForeground(Color.RED);
-        
-        JPanel panel = new JPanel();
-        panel.setBackground(Color.darkGray);
-        panel.add(label);
-
-        add(panel, BorderLayout.CENTER);
-
-        pack();
-        
-        setSize(700, 200);
-        setLocationRelativeTo(null); 
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setVisible(true);     
-    }
-	
-    public void mouseClicked(MouseEvent e) { }
-    public void mousePressed(MouseEvent e) { }
-    public void mouseReleased(MouseEvent e) {	
-        if (!revealed) {
-        	reveal();
-        }
-    }
-	
-    private void reveal() {
-        revealed = true;
-        
-        
-        label.setText("the "+product+" \nis sold to "+name);
-        label2.setVisible(true);
-        
-    }
-	
-    public void mouseEntered(MouseEvent e) {
-        if (!revealed) {
-            label.setText("the "+product+" \nis sold to "+name);
-        }
-    }
-
-    public void mouseExited(MouseEvent e) {
-        if (!revealed) {
-            label.setText("the "+product+" \nis sold to ...");
-        }
-    }
 }
-}
-
-
 

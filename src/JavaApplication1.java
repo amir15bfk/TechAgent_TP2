@@ -1,8 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
-
 import jade.core.Runtime;
 import jade.core.Profile;
 import jade.core.ProfileImpl;
@@ -40,7 +35,7 @@ public class JavaApplication1 {
         try{
             AgentController []agents = new AgentController[N];
             for (int i=0;i<N;i++){
-            agents[i] = bc.createNewAgent("buyer"+i, "BuyerAgent", new Object []{Math.random()*100});
+            agents[i] = bc.createNewAgent("buyer"+i, "BuyerAgent", new Object []{Math.random()*50});
             agents[i].start();}
             AgentController seller = cc.createNewAgent("seller", "SellerAgent", new Object[]{new Product("ball",90.0),N});
             seller.start();
